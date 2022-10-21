@@ -15,12 +15,21 @@ $blow=0;
 $com=array();
 
 if($num==1){
-    $n=array("0","1","2","3","4","5","6","7","8","9");
+    $n=array("1","2","3","4","5","6","7","8","9");
     shuffle($n);
     for($i=0;$i<4;$i++){
         $com[$i]=$n[$i];
     }
+    $co=implode("",$com);
+    echo $co;
+    echo '<br>';
     print_r($com);
+}else{
+	if(isset($_GET["computer"])){
+	$co=$_GET["computer"];
+	$com=str_split($co);
+	print_r($com);
+	}
 }
 echo '<br>';
 
@@ -46,7 +55,12 @@ for($i=0;$i<4;$i++){
 echo "blow:{$blow}";
 echo '<br>';
 
-
+$num=$num+1;
 ?>
+<form action="./page2.php" method="GET">
+<input type="submit" value="次に進む">
+<input type="hidden" value=<?php echo $num; ?>  name="kaisuu">
+<input type="hidden" value=<?php echo $co; ?>  name="computer">
+</form>
 </body>
 </html>
