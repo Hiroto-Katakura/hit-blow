@@ -57,10 +57,15 @@ echo '<br>';
 
 $num=$num+1;
 ?>
+
+<?php if($blow==4): ?>
+<input type="button" onclick="location.href='page4.html'" value="次に進む">
+<?php else: ?>
 <form action="./page2.php" method="GET">
 <input type="submit" value="次に進む">
 <input type="hidden" value=<?php echo $num; ?>  name="kaisuu">
 <input type="hidden" value=<?php echo $co; ?>  name="computer">
 </form>
+<?php endif; ?>
 </body>
 </html>

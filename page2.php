@@ -7,12 +7,17 @@
 <h1>Hit and Blow</h1>
 <?php
 
-$co=$_GET["computer"];
 //回数を数える
 if(isset($_GET["kaisuu"])){
     $num=$_GET["kaisuu"];
 }else{
     $num=1;
+}
+
+if($num>1){
+    $co=$_GET["computer"]; 
+}else{
+    $co=0;
 }
 
 echo "$num 回目";
