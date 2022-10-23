@@ -21,20 +21,15 @@ if($num==1){
         $com[$i]=$n[$i];
     }
     $co=implode("",$com);
-    echo $co;
-    echo '<br>';
-    print_r($com);
 }else{
 	if(isset($_GET["computer"])){
 	$co=$_GET["computer"];
 	$com=str_split($co);
-	print_r($com);
 	}
 }
-echo '<br>';
 
 $player=str_split($p_num);
-print_r($player);
+echo $p_num;
 echo '<br>';
 
 for($i=0;$i<4;$i++){
