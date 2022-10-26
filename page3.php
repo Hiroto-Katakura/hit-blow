@@ -1,66 +1,69 @@
 <!DOCTYPE html>
 <head lang="ja">
-<meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>Hit and Blow</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+    <title>Hit and Blow</title>
+    <link rel="stylesheet" href="style3.css" type="text/css">
 </head>
 <body>
-<h1>Hit and Blow</h1>
+    <div class="top-wrapper">
+        <h1>Hit and Blow</h1>
 
-<?php
-$p_num=$_GET['number'];
-$num=$_GET['kaisuu'];
-$hit=0;
-$blow=0;
+        <?php
+        $p_num=$_GET['number'];
+        $num=$_GET['kaisuu'];
+        $hit=0;
+        $blow=0;
 
-$com=array();
+        $com=array();
 
-if($num==1){
-    $n=array("1","2","3","4","5","6","7","8","9");
-    shuffle($n);
-    for($i=0;$i<4;$i++){
-        $com[$i]=$n[$i];
-    }
-    $co=implode("",$com);
-}else{
-	if(isset($_GET["computer"])){
-	$co=$_GET["computer"];
-	$com=str_split($co);
-	}
-}
-
-$player=str_split($p_num);
-echo $p_num;
-echo '<br>';
-
-for($i=0;$i<4;$i++){
-    for($y=0;$y<4;$y++){
-        if($com[$i]==$player[$y]){
-            $hit+=1;
+        if($num==1){
+            $n=array("1","2","3","4","5","6","7","8","9");
+            shuffle($n);
+            for($i=0;$i<4;$i++){
+                    $com[$i]=$n[$i];
+            }
+            $co=implode("",$com);
+        }else{
+	        if(isset($_GET["computer"])){
+	            $co=$_GET["computer"];
+	            $com=str_split($co);
+	        }
         }
-    }
-}
-echo "hit:{$hit}";
-echo '<br>';
 
-for($i=0;$i<4;$i++){
-    if($com[$i]==$player[$i]){
-        $blow+=1;
-    }
-}
-echo "blow:{$blow}";
-echo '<br>';
+        $player=str_split($p_num);
+        echo $p_num;
+        echo '<br>';
 
-$num=$num+1;
-?>
+        for($i=0;$i<4;$i++){
+            for($y=0;$y<4;$y++){
+                if($com[$i]==$player[$y]){
+                    $hit+=1;
+                }
+            }
+        }
+        echo "hit:{$hit}";
+        echo '<br>';
 
-<?php if($blow==4): ?>
-<input type="button" onclick="location.href='page4.html'" value="次に進む">
-<?php else: ?>
-<form action="./page2.php" method="GET">
-<input type="submit" value="次に進む">
-<input type="hidden" value=<?php echo $num; ?>  name="kaisuu">
-<input type="hidden" value=<?php echo $co; ?>  name="computer">
-</form>
-<?php endif; ?>
+        for($i=0;$i<4;$i++){
+            if($com[$i]==$player[$i]){
+                $blow+=1;
+            }
+        }
+        echo "blow:{$blow}";
+        echo '<br>';
+
+        $num=$num+1;
+        ?>
+
+        <?php if($blow==4): ?>
+            <input type="button" onclick="location.href='page4.html'" value="次に進む">
+        <?php else: ?>
+            <form action="./page2.php" method="GET">
+                <input type="submit" value="次に進む">
+                <input type="hidden" value=<?php echo $num; ?>  name="kaisuu">
+                <input type="hidden" value=<?php echo $co; ?>  name="computer">
+            </form>
+        <?php endif; ?>
+    </div>
 </body>
 </html>
