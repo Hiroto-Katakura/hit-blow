@@ -36,27 +36,26 @@
             echo '<br>';
 
             for($i=0;$i<4;$i++){
-                for($y=0;$y<4;$y++){
-                    if($com[$i]==$player[$y]){
-                        $hit+=1;
+                if($com[$i]==$player[$i]){
+                    $hit+=1;
+                }else{
+                    for($y=0;$y<4;$y++){
+                        if($com[$i]==$player[$y]){
+                            $blow+=1;
+                        }
                     }
                 }
             }
             echo "hit:{$hit}";
             echo '<br>';
-
-            for($i=0;$i<4;$i++){
-                if($com[$i]==$player[$i]){
-                    $blow+=1;
-                }
-            }
             echo "blow:{$blow}";
             echo '<br>';
+
 
             $num=$num+1;
             ?>
 
-            <?php if($blow==4): ?>
+            <?php if($hit==4): ?>
                 <input class="bt1" type="button" onclick="location.href='page4.html'" value="次に進む">
             <?php else: ?>
                 <form action="./page2.php" method="GET">
